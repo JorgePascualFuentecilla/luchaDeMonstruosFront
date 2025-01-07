@@ -11,19 +11,103 @@ const App = () => {
 
   // Maneja la selección de un villano por parte del jugador
   const handleVillainSelect = (villain) => {
-    setSelectedVillain(villain);
+    const bonificaciones = villain.BonificacionVillanos.reduce(
+      (acc, bonificacion) => {
+        switch (bonificacion.NombreBonificacion) {
+          case 'Fuerza del Caos':
+          case 'Aura Glacial':
+          case 'Manto de Oscuridad':
+            acc.bonificacionAtaque = bonificacion.Valor;
+            break;
+          case 'Placas de Acero':
+            acc.bonificacionDefensa = bonificacion.Valor;
+            break;
+          case 'Toxina Extrema':
+            acc.bonificacionVida = bonificacion.Valor;
+            break;
+          default:
+            break;
+        }
+        return acc;
+      },
+      { bonificacionVida: 0, bonificacionAtaque: 0, bonificacionDefensa: 0 }
+    );
+
+    setSelectedVillain({
+      ...villain,
+      ...bonificaciones,
+    });
+
     setSelectedMonster(null); // Reinicia el monstruo seleccionado si el villano cambia
+  };
+
+  // Procesa los atributos y poderes de un monstruo
+  const processMonster = (monster) => {
+    const atributos = monster.AtributosMonstruos.reduce((acc, atributo) => {
+      const valor = parseInt(atributo.AtributosMonstruos_has_Monstruos.Valor, 10);
+      switch (atributo.Nombre) {
+        case 'Ataque':
+          acc.ataque = valor;
+          break;
+        case 'Defensa':
+          acc.defensa = valor;
+          break;
+        case 'Puntos de Vida':
+          acc.vida = valor;
+          break;
+        default:
+          break;
+      }
+      return acc;
+    }, { ataque: 0, defensa: 0, vida: 0 });
+
+    return {
+      ...monster,
+      ...atributos,
+      poder: monster.Poderes[0]?.NombrePoderes || 'Sin poder',
+    };
   };
 
   // Maneja la selección de un monstruo por parte del jugador
   const handleMonsterSelect = async (monster) => {
-    setSelectedMonster(monster);
+    const processedMonster = processMonster(monster);
+    setSelectedMonster(processedMonster);
 
     // Genera el rival automáticamente
     const [villains, monsters] = await Promise.all([getVillains(), getMonsters()]);
     const randomVillain = villains[Math.floor(Math.random() * villains.length)];
-    const randomMonster = monsters[Math.floor(Math.random() * monsters.length)];
-    setRival({ villain: randomVillain, monster: randomMonster });
+
+    const rivalBonificaciones = randomVillain.BonificacionVillanos.reduce(
+      (acc, bonificacion) => {
+        switch (bonificacion.NombreBonificacion) {
+          case 'Fuerza del Caos':
+          case 'Aura Glacial':
+          case 'Manto de Oscuridad':
+            acc.bonificacionAtaque = bonificacion.Valor;
+            break;
+          case 'Placas de Acero':
+            acc.bonificacionDefensa = bonificacion.Valor;
+            break;
+          case 'Toxina Extrema':
+            acc.bonificacionVida = bonificacion.Valor;
+            break;
+          default:
+            break;
+        }
+        return acc;
+      },
+      { bonificacionVida: 0, bonificacionAtaque: 0, bonificacionDefensa: 0 }
+    );
+
+    const randomMonster = processMonster(monsters[Math.floor(Math.random() * monsters.length)]);
+
+    setRival({
+      villain: {
+        ...randomVillain,
+        ...rivalBonificaciones,
+      },
+      monster: randomMonster,
+    });
   };
 
   // Si el jugador aún no ha seleccionado un villano
