@@ -5,11 +5,11 @@ import { getMonsters } from './api.js';
 import PokemonRealista from '../assets/images/monsters/PokemonRealista.jpg';
 import PitufoDelKaos from '../assets/images/monsters/PitufoDelKaos.jpg';
 import CaperucitaLoca from '../assets/images/monsters/CaperucitaLoca.jpg';
-import MercenarioInformatico from '../assets/images/monsters/MercenarioInformatico.jpg';
+import MercenarioInformatico from '../assets/images/monsters/MercenarioInformatico.gif';
 import MakinaRata from '../assets/images/monsters/MakinaRata.jpg';
 
 const monsterImages = {
-  'Pokemon Realista': PokemonRealista,
+  'Pika Pika (y no me puedo rascar)': PokemonRealista,
   'Pitufo del Kaos': PitufoDelKaos,
   'Caperucita Loca': CaperucitaLoca,
   'Mercenario Informatico': MercenarioInformatico,
