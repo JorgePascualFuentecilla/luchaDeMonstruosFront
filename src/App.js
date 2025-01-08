@@ -53,7 +53,7 @@ const App = () => {
           acc.defensa = valor;
           break;
         case 'Puntos de Vida':
-          acc.vida = valor;
+          acc.vida = valor + 300; // Agregar 300 puntos de vida base
           break;
         default:
           break;
