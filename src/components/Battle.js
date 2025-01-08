@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// Importa las imágenes de monstruos y villanos
 import PokemonRealista from '../assets/images/monsters/PokemonRealista.jpg';
 import PitufoDelKaos from '../assets/images/monsters/PitufoDelKaos.jpg';
 import CaperucitaLoca from '../assets/images/monsters/CaperucitaLoca.jpg';
@@ -30,7 +29,6 @@ const villainImages = {
 
 // Componente Battle
 const Battle = ({ villain, monster, rival }) => {
-  // Validar si los datos están disponibles
   useEffect(() => {
     if (!villain || !monster || !rival || !rival.monster || !rival.villain) {
       console.error('Datos insuficientes para iniciar el combate');
@@ -51,12 +49,12 @@ const Battle = ({ villain, monster, rival }) => {
   
     const totalAttack = attacker.ataque + bonusAttack;
   
-    // Calcular probabilidad de fallo
+    // Calculo de la probabilidad de fallo
     const failChance = Math.min(totalAttack / 100, 0.2); // Máximo 20% de fallo
     const attackRoll = Math.random();
   
     if (attackRoll < failChance) {
-      return 0; // Ataque falla
+      return 0;
     }
   
     // Calcular daño si el ataque acierta
