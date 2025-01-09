@@ -1,70 +1,127 @@
 # Getting Started with Create React App
+# Selección de Villanos y Monstruos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación desarrollada en React que permite a los usuarios seleccionar un villano y un monstruo para realizar batallas. La interfaz incluye pantallas atractivas y funcionales para elegir personajes y llevar a cabo enfrentamientos.
 
-## Available Scripts
+## Características principales
 
-In the project directory, you can run:
+- **Selección de Villanos:** Los usuarios pueden elegir entre diferentes villanos con imágenes ilustrativas.
+- **Selección de Monstruos:** Los usuarios pueden seleccionar monstruos con atributos específicos.
+- **Interfaz Estilizada:** Diseño visual mejorado para una experiencia de usuario atractiva.
+- **API Local:** La aplicación consume datos de villanos y monstruos desde una API.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologías utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend:**
+  - React
+  - CSS (diseño responsivo)
+- **Backend:**
+  - API local para obtener datos de villanos y monstruos
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Estructura del proyecto
 
-### `npm run build`
+```
+src/
+├── assets/
+│   ├── images/
+│   │   ├── monsters/
+│   │   └── villains/
+│   └── styles/
+│       └── styles.css
+├── components/
+│   ├── MonsterSelection.js
+│   └── VillainSelection.js
+├── App.js
+└── index.js
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Descripción de carpetas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **`assets/images`**: Contiene imágenes de villanos y monstruos.
+- **`assets/styles`**: Almacena el archivo CSS con los estilos de la aplicación.
+- **`components`**: Contiene los componentes principales para la selección de villanos y monstruos.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Instalación
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Sigue estos pasos para ejecutar el proyecto localmente:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clona el repositorio:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```bash
+   git clone <url-del-repositorio>
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Ve al directorio del proyecto:
 
-## Learn More
+   ```bash
+   cd seleccion-villanos-monstruos
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Instala las dependencias:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   npm install
+   ```
 
-### Code Splitting
+4. Ejecuta el proyecto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   ```bash
+   npm start
+   ```
 
-### Analyzing the Bundle Size
+5. Abre tu navegador y ve a:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   ```
+   http://localhost:3000
+   ```
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Uso
 
-### Advanced Configuration
+1. En la pantalla de inicio, selecciona un villano de la lista disponible.
+2. Después, selecciona un monstruo de la lista correspondiente.
+3. Procede con la batalla.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Personalización
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Estilos:** Puedes modificar el archivo `styles.css` ubicado en `src/assets/styles` para ajustar la apariencia de la aplicación.
+- **Datos:** Los datos de villanos y monstruos se obtienen desde una API local. Puedes modificar las funciones `getVillains` y `getMonsters` en `api.js` para cambiar la fuente de datos.
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contribución
+
+Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una rama nueva para tu funcionalidad:
+   ```bash
+   git checkout -b nueva-funcionalidad
+   ```
+3. Realiza tus cambios y haz commit:
+   ```bash
+   git commit -m "Agrega nueva funcionalidad"
+   ```
+4. Envía un pull request.
+
+---
+
+## Licencia
+
+Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
+
+---
+
+## Contacto
+
+Si tienes alguna duda o sugerencia, no dudes en contactarme.
+
