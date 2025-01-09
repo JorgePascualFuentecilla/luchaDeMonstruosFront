@@ -1,7 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { getMonsters } from './api';
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { getMonsters } from './api.js';
+import '../assets/styles/styles.css';
 
-const MonsterSelection = ({ villain, onMonsterSelect }) => {
+// Importa las imágenes locales
+import PokemonRealista from '../assets/images/monsters/PokemonRealista.jpg';
+import PitufoDelKaos from '../assets/images/monsters/PitufoDelKaos.jpg';
+import CaperucitaLoca from '../assets/images/monsters/CaperucitaLoca.jpg';
+import MercenarioInformatico from '../assets/images/monsters/MercenarioInformatico.gif';
+import MakinaRata from '../assets/images/monsters/MakinaRata.jpg';
+
+const monsterImages = {
+  'Pika Pika (y no me puedo rascar)': PokemonRealista,
+  'Pitufo del Kaos': PitufoDelKaos,
+  'Caperucita Loca': CaperucitaLoca,
+  'Mercenario Informatico': MercenarioInformatico,
+  'MakinaRata': MakinaRata,
+};
+
+const MonsterSelection = function ({ onMonsterSelect }) {
   const [monsters, setMonsters] = useState([]);
 
   useEffect(() => {
@@ -10,16 +27,22 @@ const MonsterSelection = ({ villain, onMonsterSelect }) => {
 
   return (
     <div>
-      <h1>Selecciona un Monstruo para {villain.Nombre}</h1>
-      <ul>
+      <h1>Selecciona un Monstruo</h1>
+      <div className="container">
         {monsters.map((monster) => (
-          <li key={monster.idMonstruos}>
-            <button onClick={() => onMonsterSelect(monster)}>
-              {monster.Nombre}
-            </button>
-          </li>
+          <div
+            key={monster.id}
+            className="card"
+            onClick={() => onMonsterSelect(monster)}
+          >
+            <img
+              src={monsterImages[monster.Nombre]}
+              alt={monster.Nombre}
+            />
+            <p>{monster.Nombre}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
